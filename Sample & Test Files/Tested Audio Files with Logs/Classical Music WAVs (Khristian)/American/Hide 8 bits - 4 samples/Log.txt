@@ -1,0 +1,34 @@
+C:\Users\ianro\Downloads\Steganography\Team Project\Milestone 2>stego.exe -hide -m NiceView.png -c American.wav -o American_16bits.wav -b 16 -n 8
+Cover file successfully loaded with 3021852 bytes of audio data.
+Writing WAV output to file...
+Message successfully hidden in WAV file.
+
+C:\Users\ianro\Downloads\Steganography\Team Project\Milestone 2>stego.exe -extract -s American_16bits.wav -o RecoveredMessage.png -b 16 -n 8
+Stego file successfully loaded with 3021852 bytes of audio data.
+Decoded message length: 196831 bytes
+Message successfully extracted (196831 bytes written).
+
+C:\Users\ianro\Downloads\Steganography\Team Project\Milestone 2>Sha256.exe NiceView.png
+370b69f4d6f31e694305c80a992d212c607ab5a60119ae8c3bd1fa66c3fcf4a2  NiceView.png
+
+C:\Users\ianro\Downloads\Steganography\Team Project\Milestone 2>Sha256.exe RecoveredMessage.png
+648e7e04ad2900629cbaa8dfd0e30fc6f4d4bf1aa8362c76cfbc2bf3e1b573c2  RecoveredMessage.png
+
+C:\Users\ianro\Downloads\Steganography\Team Project\Milestone 2>stego.exe -hide -m NiceView.png -c American.wav -o American_8bits.wav -b 8 -n 4
+Cover file successfully loaded with 3021852 bytes of audio data.
+Writing WAV output to file...
+Message successfully hidden in WAV file.
+
+C:\Users\ianro\Downloads\Steganography\Team Project\Milestone 2>stego.exe -extract -s American_8bits.wav -o RecoveredMessage.png -b 8 -n 4
+Stego file successfully loaded with 3021852 bytes of audio data.
+Decoded message length: 207071 bytes
+Message successfully extracted (207071 bytes written).
+
+C:\Users\ianro\Downloads\Steganography\Team Project\Milestone 2>Sha256.exe NiceView.png
+
+370b69f4d6f31e694305c80a992d212c607ab5a60119ae8c3bd1fa66c3fcf4a2  NiceView.png
+
+C:\Users\ianro\Downloads\Steganography\Team Project\Milestone 2>Sha256.exe RecoveredMessage.png
+267a63c484d59a8d448fdb4e700e56bc9525bc7928876aff9d6ab3a5410d5ef8  RecoveredMessage.png
+
+C:\Users\ianro\Downloads\Steganography\Team Project\Milestone 2>
