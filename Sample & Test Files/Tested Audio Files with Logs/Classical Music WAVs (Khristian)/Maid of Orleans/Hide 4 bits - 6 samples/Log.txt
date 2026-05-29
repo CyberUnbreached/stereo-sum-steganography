@@ -1,0 +1,17 @@
+C:\Users\ianro\Downloads\Steganography\Team Project\Milestone 2>stego.exe -hide -m snail.bmp -c MaidofOrleans.wav -o MaidofOrleans_4bits.wav -b 4 -n 6
+Cover file successfully loaded with 3311616 bytes of audio data.
+Writing WAV output to file...
+Message successfully hidden in WAV file.
+
+C:\Users\ianro\Downloads\Steganography\Team Project\Milestone 2>stego.exe -extract -s MaidofOrleans_4bits.wav -o RecoveredMessage.bmp -b 4 -n 6
+Stego file successfully loaded with 3311616 bytes of audio data.
+Decoded message length: 196666 bytes
+Message successfully extracted (196666 bytes written).
+
+C:\Users\ianro\Downloads\Steganography\Team Project\Milestone 2>Sha256.exe snail.bmp
+38ab01c3859370546e0b498d862f86ac4c0681671cabe741054cc03312abdfe7  snail.bmp
+
+C:\Users\ianro\Downloads\Steganography\Team Project\Milestone 2>Sha256.exe RecoveredMessage.bmp
+64e7f6c5e0b89ec067fe3e10cf7ad707b7a20784bab931e93f1601dddb8c3310  RecoveredMessage.bmp
+
+C:\Users\ianro\Downloads\Steganography\Team Project\Milestone 2>

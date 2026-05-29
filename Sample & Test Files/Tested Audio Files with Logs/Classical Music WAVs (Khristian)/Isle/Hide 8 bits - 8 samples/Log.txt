@@ -1,0 +1,36 @@
+C:\Users\ianro\Downloads\Steganography\Team Project\Milestone 2>stego.exe
+Error: Missing mode (-hide or -extract)
+Usage: stego.exe [mode] [options]
+Modes:
+  -hide        Hide a message in a WAV file
+  -extract     Extract a hidden message from a WAV file
+
+Options:
+  -m <message>   Message file to embed (for -hide)
+  -c <cover>     Cover WAV file (for -hide)
+  -s <stego>     Stego WAV file (for -extract)
+  -o <output>    Output file (for both -hide and -extract)
+  -b <bits>      Number of bits to embed per block (1-16)
+  -n <samples>   Number of stereo sample pairs per block (2, 4, 6, 8)
+
+Example:
+  stego.exe -hide -m message.txt -c cover.wav -o output.wav -b 8 -n 4
+  stego.exe -extract -s stego.wav -o recovered.txt -b 8 -n 4
+
+C:\Users\ianro\Downloads\Steganography\Team Project\Milestone 2>stego.exe -hide -m NiceView.png -c Isle.wav -o Isle_8bits.wav -b 8 -n 8
+Cover file successfully loaded with 2596608 bytes of audio data.
+Writing WAV output to file...
+Message successfully hidden in WAV file.
+
+C:\Users\ianro\Downloads\Steganography\Team Project\Milestone 2>stego.exe -extract -s Isle_8bits.wav -o RecoveredMessage.png -b 8 -n 8
+Stego file successfully loaded with 2596608 bytes of audio data.
+Decoded message length: 207071 bytes
+Message successfully extracted (207071 bytes written).
+
+C:\Users\ianro\Downloads\Steganography\Team Project\Milestone 2>Sha256.exe NiceView.png
+370b69f4d6f31e694305c80a992d212c607ab5a60119ae8c3bd1fa66c3fcf4a2  NiceView.png
+
+C:\Users\ianro\Downloads\Steganography\Team Project\Milestone 2>Sha256.exe RecoveredMessage.png
+db4fc4e7c3b0ccb48e82f968813d7df989dabe971380b22d25f681693f13791e  RecoveredMessage.png
+
+C:\Users\ianro\Downloads\Steganography\Team Project\Milestone 2>
