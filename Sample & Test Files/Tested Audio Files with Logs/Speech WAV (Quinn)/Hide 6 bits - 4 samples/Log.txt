@@ -1,0 +1,17 @@
+C:\Users\ianro\Downloads\Steganography\Team Project\Milestone 2>stego.exe -hide -m BurgerKing.wav -c Homestuck.wav -o Homestuck_6bit.wav -b 6 -n 4
+Cover file successfully loaded with 2645532 bytes of audio data.
+Writing WAV output to file...
+Message successfully hidden in WAV file.
+
+C:\Users\ianro\Downloads\Steganography\Team Project\Milestone 2>stego.exe -extract -s Homestuck_6bit.wav -o RecoveredMessage.wav -b 6 -n 4
+Stego file successfully loaded with 2645532 bytes of audio data.
+Decoded message length: 316210 bytes
+Message successfully extracted (316210 bytes written).
+
+C:\Users\ianro\Downloads\Steganography\Team Project\Milestone 2>Sha256.exe Homestuck_6bit.wav
+a74799275ea15536b6dfd48c9d95626db2e8e1bece6b227c5a98ec41a2baca87  Homestuck_6bit.wav
+
+C:\Users\ianro\Downloads\Steganography\Team Project\Milestone 2>Sha256.exe RecoveredMessage.wav
+f6ace765087c22cf4999953c27cca6e1da5363c3a9b03a978c813e9ffb3c6a0a  RecoveredMessage.wav
+
+C:\Users\ianro\Downloads\Steganography\Team Project\Milestone 2>
