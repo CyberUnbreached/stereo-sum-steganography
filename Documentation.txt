@@ -1,0 +1,123 @@
+Stereo Sum Embedding for Audio Steganography Project
+----------------------------------------------------
+DESCRIPTION
+
+This program hides and extracts messages (text, BMP, WAV, etc.) in stereo WAV files using a block-based sum modification technique. The number of samples per block and the number of embedded bits can be customized to control capacity and audio distortion.
+
+----------------------------------------------------
+NOTABLE FEATURES
+
+- Embed arbitrary files into stereo WAV audio using sum-based steganography.
+- Extract embedded files reliably, including .txt, .bmp, and .wav.
+- Customizable parameters:
+	- Bits per block (-b)
+	- Samples per block (-n)
+
+----------------------------------------------------
+FILES
+
+main.c : Command-line interface and argument parsing
+
+hide.c : Message embedding logic
+
+extract.c : Message extraction logic
+
+wav_io.c : WAV validation and data loading
+
+wav_io.h : Function prototypes for WAV utilities
+
+extract.h / hide.h : Prototypes for message functions (if used)
+
+stego.exe : Compiled executable
+
+README.txt : This documentation
+
+Various sample files : For testing our program
+
+Various test files : Also for testing, shows different tests ran
+
+----------------------------------------------------
+COMPILATION INSTRUCTIONS
+
+Use this command to compile the program:
+gcc -o stego.exe main.c hide.c extract.c wav_io.c
+
+You will need gcc or some alternative compiler.
+
+----------------------------------------------------
+USAGE EXAMPLES
+
+To hide a message use:
+stego.exe -hide -m Secret.txt -c Cover.wav -o Stego.wav -b 8 -n 4
+
+-m: Message file to embed
+-c: Cover WAV file
+-o: Output file (Stego WAV)
+-b: Bits per block (1–16)
+-n: Stereo sample pairs per block (2, 4, 6, or 8)
+
+To extract a message use:
+stego.exe -extract -s Stego.wav -o Recovered.txt -b 8 -n 4
+
+-s: Stego WAV file
+-o: Output file for recovered message
+-b: Must match the value used during embedding
+-n: Must match the value used during embedding
+
+----------------------------------------------------
+REQUIREMENTS
+
+Input WAV must be:
+
+	- 16-bit PCM
+
+	- Stereo (2 channels)
+
+	- Sample rate of 44100 or 48000 Hz
+
+File types hidden should not exceed cover file capacity.
+
+----------------------------------------------------
+
+AUTHORS AND CONTRIBUTIONS
+
+Completed by Team 03: Khristian Neal, Ian Rohan, Quinn Westerberg
+
+Khristian Neal - Provided sample wav files for embedding, helped to test program
+
+Ian Rohan - Responsible for coding program, provided sample wav file for embedding, provided text/bmp/png files for embedding into wav, tested program
+
+Quinn Westerberg - Provided sample wav files for embedding, helped to test program
+
+
+----------------------------------------------------
+KNOWN ISSUES / LIMITATIONS
+
+Here are some limitations and issues from your previous conversations and the code itself:
+
+1. WAVV Embedding - When attempting to embed a WAV into another WAV, it may be truncated or not fully embedded. FOUND REASONING: This is due to having too large of a sample size, at lower sample sizes the extracted .wav is the exact same as the embedded.
+
+2. Block Embedding Robustness - The "adjust_block_samples" function tries to adjust the sum of samples to encode bits, but if the required delta is not achievable (due to sample value limits), it may fail silently or not embed the intended bits, leading to extraction errors. This occurs a lot more often the more bits you intend to embed (more than 8).
+
+----------------------------------------------------
+VERIFYING OUTPUT INTEGRITY
+
+To verify that the extracted file matches the original, use a SHA256 hash utility.
+
+Example:
+    Sha256.exe Secret.txt
+    Sha256.exe Recovered.txt
+
+If the hashes match, the file was successfully recovered without corruption.
+
+----------------------------------------------------
+TESTING NOTES
+
+Recommended starting parameters for testing:
+    -b 8 -n 4 : Good balance of capacity and audio quality
+    -b 12 -n 4 : Higher capacity, may cause audible distortion or corruption if embedding large files
+
+When hiding WAV files, ensure the cover file is significantly larger than the message file.
+
+
+
