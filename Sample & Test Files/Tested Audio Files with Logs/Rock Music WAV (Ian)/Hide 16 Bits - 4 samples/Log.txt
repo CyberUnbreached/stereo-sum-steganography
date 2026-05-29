@@ -1,0 +1,17 @@
+C:\Users\ianro\Downloads\Steganography\Team Project\Milestone 2>stego.exe -hide -m Secret.txt -c RockSong.wav -o RockSong_16bits.wav -b 16 -n 4
+Cover file successfully loaded with 7232400 bytes of audio data.
+Writing WAV output to file...
+Message successfully hidden in WAV file.
+
+C:\Users\ianro\Downloads\Steganography\Team Project\Milestone 2>stego.exe -extract -s RockSong_16bits.wav -o RecoveredMessage.txt -b 16 -n 4
+Stego file successfully loaded with 7232400 bytes of audio data.
+Decoded message length: 68 bytes
+Message successfully extracted (68 bytes written).
+
+C:\Users\ianro\Downloads\Steganography\Team Project\Milestone 2>Sha256.exe Secret.txt
+7d374ec41b4fc3c7dd25ce43723c84f0d6aaa2150a55360036dfd8a31c1fc1b5  Secret.txt
+
+C:\Users\ianro\Downloads\Steganography\Team Project\Milestone 2>Sha256.exe RecoveredMessage.txt
+ccab9c1ad1d2e4fb2d73ac4eaf95b85e3ddb9317bec136f06548159144517f6d  RecoveredMessage.txt
+
+C:\Users\ianro\Downloads\Steganography\Team Project\Milestone 2>

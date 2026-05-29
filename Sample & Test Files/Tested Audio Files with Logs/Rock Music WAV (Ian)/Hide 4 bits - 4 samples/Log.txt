@@ -1,0 +1,40 @@
+C:\Users\ianro\Downloads\Steganography\Team Project\Milestone 2>stego.exe
+Error: Missing mode (-hide or -extract)
+Usage: stego.exe [mode] [options]
+Modes:
+  -hide        Hide a message in a WAV file
+  -extract     Extract a hidden message from a WAV file
+
+Options:
+  -m <message>   Message file to embed (for -hide)
+  -c <cover>     Cover WAV file (for -hide)
+  -s <stego>     Stego WAV file (for -extract)
+  -o <output>    Output file (for both -hide and -extract)
+  -b <bits>      Number of bits to embed per block (1-16)
+  -n <samples>   Number of stereo sample pairs per block (2, 4, 6, 8)
+
+Example:
+  stego.exe -hide -m message.txt -c cover.wav -o output.wav -b 8 -n 4
+  stego.exe -extract -s stego.wav -o recovered.txt -b 8 -n 4
+
+C:\Users\ianro\Downloads\Steganography\Team Project\Milestone 2>stego.exe -hide -m Secret.txt -c RockSong.wav -o RockSong_4bits.wav -b 4 -n 4
+Cover file successfully loaded with 7232400 bytes of audio data.
+[DEBUG] Writing WAV output to file...
+Message successfully hidden in WAV file.
+
+C:\Users\ianro\Downloads\Steganography\Team Project\Milestone 2>stego.exe -extract -s RockSong_4bits.wav -o RecoveredMessage.txt -b 4 -n 4
+Stego file successfully loaded with 7232400 bytes of audio data.
+[DEBUG] Starting extraction of message
+[DEBUG] Total pairs: 1808100, Blocks: 452025
+[DEBUG] Extracted message length: 2628 bytes
+[DEBUG] Full message extracted.
+[DEBUG] Decoded message length: 2628 bytes
+Message successfully extracted (2628 bytes written).
+
+C:\Users\ianro\Downloads\Steganography\Team Project\Milestone 2>Sha256.exe Secret.txt
+7d374ec41b4fc3c7dd25ce43723c84f0d6aaa2150a55360036dfd8a31c1fc1b5  Secret.txt
+
+C:\Users\ianro\Downloads\Steganography\Team Project\Milestone 2>Sha256.exe RecoveredMessage.txt
+7d374ec41b4fc3c7dd25ce43723c84f0d6aaa2150a55360036dfd8a31c1fc1b5  RecoveredMessage.txt
+
+C:\Users\ianro\Downloads\Steganography\Team Project\Milestone 2>
